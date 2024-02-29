@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,14 +18,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', [HomeController::class, 'index']); 
 
 Route::prefix('/category')->group(function () {
+    Route::get('/', [ProductController::class, 'index']);
     Route::get('/food-beverage', [ProductController::class, 'foodBeverage']);
-    Route::get('/beauty-health', [ProductController::class, 'beauty-health']);
-    Route::get('/home-care', [ProductController::class, 'home-care']);
-    Route::get('/baby-kid', [ProductController::class, 'baby-kid']);
+    Route::get('/beauty-health', [ProductController::class, 'beautyHealth']);
+    Route::get('/home-care', [ProductController::class, 'homeCare'])->name('home-care');
+    Route::get('/baby-kid', [ProductController::class, 'babyKid'])->name('baby-kid');
 });
+
+Route::get('/user/{id}/name/{name}',[UserController::class,'index']);
+
+Route::get('/penjualan', [PenjualanController::class, 'index']);
