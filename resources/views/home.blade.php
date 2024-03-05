@@ -10,7 +10,7 @@
     
     <h3>MENU</h3>
     <ul>
-        <li><a href="{{url('/user/{14}/name/{Muhamad Anang}')}}">user</a></li>
+        <li><a href="{{url('/user')}}">user</a></li>
         <li><a href="{{url('/category')}}">category</a></li>
         <li><a href="{{url('/penjualan')}}">penjualan</a></li>
 </body>
