@@ -11,7 +11,15 @@ class UserController extends Controller
 {
     public function index() {
 
-        // tambah data user dengan Eloquent Model
+        $user = UserModel::findOr(20,['username', 'nama'],function() {
+            abort(404);
+        }); 
+        return view('user.user', ['data' => $user]);
+    }
+}
+
+
+// tambah data user dengan Eloquent Model
         // $data = [
         //     'username' => 'customer-1',
         //     'nama' => 'Pelanggan',
@@ -21,16 +29,18 @@ class UserController extends Controller
         // UserModel::insert($data); // insert data user
         
         // tambah data user dengan Eloquent Model
-        $data = [
-            'nama' => 'Pelanggan Pertama',
-        ];
-        UserModel::where('username', 'customer-1')->update($data); // update data user
+        // $data = [
+        //     'nama' => 'Pelanggan Pertama',
+        // ];
+        // UserModel::where('username', 'customer-1')->update($data); // update data user
+
+        // $data = [
+        //     'level_id' => 2,
+        //     'username' => 'manager_tuga',
+        //     'nama' => 'Manager 3',
+        //     'password' => Hash::make('12345'),
+        // ];
+        // UserModel::create($data);
 
         //coba akses model userModel
-        $user = UserModel::all(); //ambil semua data dari tabel m_user
-        return view('user.user', ['data' => $user]);
-    }
-}
-
-
-
+        
