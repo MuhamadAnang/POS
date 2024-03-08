@@ -11,14 +11,8 @@ class UserController extends Controller
 {
     public function index() {
 
-        $user = UserModel::firstOrCreate(
-            [
-                'username' => 'manager22',
-                'nama' => 'Manager Dua Dua',
-                'password' => Hash::make('12345'),
-                'level_id' => 2
-            ]
-        ); 
+        $user = UserModel::where('level_id',2)->count();
+        // dd($user); 
         return view('user.user', ['data' => $user]);
     }
 }
@@ -48,4 +42,14 @@ class UserController extends Controller
         // UserModel::create($data);
 
         //coba akses model userModel
+        
+        // firstOrCreate(
+        //     [
+        //         'username' => 'manager22',
+        //         'nama' => 'Manager Dua Dua',
+        //         'password' => Hash::make('12345'),
+        //         'level_id' => 2
+        //     ]
+
+
         
