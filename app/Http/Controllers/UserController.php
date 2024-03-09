@@ -11,45 +11,16 @@ class UserController extends Controller
 {
     public function index() {
 
-        $user = UserModel::where('level_id',2)->count();
-        // dd($user); 
+        $user = UserModel::firstOrNew(
+            [
+                'username' => 'manager33',
+                'nama' => 'Manager TigaTiga',
+                'password' => Hash::make('12345'),
+                'level_id' => 2,
+            ],
+        );
+        $user->save();
+
         return view('user.user', ['data' => $user]);
     }
 }
-
-
-// tambah data user dengan Eloquent Model
-        // $data = [
-        //     'username' => 'customer-1',
-        //     'nama' => 'Pelanggan',
-        //     'password' => Hash::make('12345'),
-        //     'level_id' => 4
-        // ];
-        // UserModel::insert($data); // insert data user
-        
-        // tambah data user dengan Eloquent Model
-        // $data = [
-        //     'nama' => 'Pelanggan Pertama',
-        // ];
-        // UserModel::where('username', 'customer-1')->update($data); // update data user
-
-        // $data = [
-        //     'level_id' => 2,
-        //     'username' => 'manager_tuga',
-        //     'nama' => 'Manager 3',
-        //     'password' => Hash::make('12345'),
-        // ];
-        // UserModel::create($data);
-
-        //coba akses model userModel
-        
-        // firstOrCreate(
-        //     [
-        //         'username' => 'manager22',
-        //         'nama' => 'Manager Dua Dua',
-        //         'password' => Hash::make('12345'),
-        //         'level_id' => 2
-        //     ]
-
-
-        
