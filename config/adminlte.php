@@ -334,6 +334,11 @@ return [
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
+            'text' => 'Manage Kategori',
+            'url' => 'kategori',
+            'icon' => 'fa-solid fa-list',
+        ],
+        [
             'text' => 'multilevel',
             'icon' => 'fas fa-fw fa-share',
             'submenu' => [
