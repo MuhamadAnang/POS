@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\m_evel;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('level_id')->index(); //indexing untk ForeignKey 
             $table->string('username', 20)->unique(); //unique untk memastikan tidak ada usernaem yang sama
             $table->string('nama', 100);
-            $table->string('password', 100);
+            $table->string('password');
             $table->timestamps();
 
             //Mendefinisikan foreign key pada kolom level_id mengacu pada kolom level_id di tabel m_level
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('m_user');
+        Schema::dropIfExists('useri');
     }
 };

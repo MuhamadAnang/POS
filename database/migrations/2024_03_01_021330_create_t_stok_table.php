@@ -12,16 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('t_stok', function (Blueprint $table) {
-            $table->id('stok_id');
-            $table->unsignedBigInteger('barang_id')->index(); //indexing untk ForeignKey 
-            $table->unsignedBigInteger('user_id')->index(); //indexing untk ForeignKey 
-            $table->datetime('stok_tanggal');
-            $table->integer('stok_jumlah'); 
+            $table->id('stok_id')->nullable(false);
+            $table->unsignedBigInteger('barang_id')->nullable(false);
+            $table->unsignedBigInteger('user_id')->nullable(false);
+            $table->dateTime('stok_tanggal')->nullable(false);
+            $table->integer('stok_jumlah')->nullable(false);
             $table->timestamps();
 
-            //Mendefinisikan foreign key 
-            $table->foreign('barang_id')->references('barang_id')->on('m_barang');
-            $table->foreign('user_id')->references('user_id')->on('m_user');
+            $table->foreign('barang_id')->on('m_barang')->references('barang_id');
+            $table->foreign('user_id')->on('m_user')->references('user_id');
         });
     }
 
