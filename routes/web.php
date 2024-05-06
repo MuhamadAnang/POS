@@ -53,9 +53,10 @@ Route::post('/stok/list', [StokController::class, 'list']);
 Route::resource('/transaksi', TransaksiController::class);
 Route::post('/transaksi/list', [TransaksiController::class, 'list']);
 
+
+
 // API
 Route::get('/api/barang/{id}/get', [BarangController::class, 'get']);
-
 
 
 Route::get('login',[AuthController::class,'index'])->name('login');
@@ -63,6 +64,7 @@ Route::get('register',[AuthController::class,'register'])->name('register');
 Route::post('proses_login',[AuthController::class,'proses_login'])->name('proses_login');
 Route::get('logout',[AuthController::class,'logout'])->name('logout');
 Route::post('proses_register',[AuthController::class,'proses_register'])->name('proses_register');
+
 
 // kita atur juga untuk middleware menggunakan group pada routing
 // di dalamnya terdapat group untuk mengecek kondisi login
@@ -76,6 +78,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('manager', ManagerController::class);
     });
 });
+
+
 
 
 
